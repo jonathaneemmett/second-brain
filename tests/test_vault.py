@@ -95,6 +95,7 @@ def test_safe_name_strips_path_characters():
     assert safe_name("a/b\\c:d?") == "abcd"
     assert safe_name("../..") == "untitled"
     assert safe_name("", fallback="x") == "x"
+    assert safe_name("a" * 200) == "a" * 80
 
 
 def test_search_ignores_dreams_and_archive(seeded):

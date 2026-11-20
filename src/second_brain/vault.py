@@ -31,8 +31,8 @@ class VaultError(Exception):
 
 
 def safe_name(name: str, fallback: str = "untitled") -> str:
-    """Make a string usable as a note filename stem: no path characters, no leading dots."""
-    cleaned = UNSAFE_NAME.sub("", name).strip().strip(".").strip()
+    """Make a string usable as a note filename stem: no path characters, no edge dots, 80 chars."""
+    cleaned = UNSAFE_NAME.sub("", name).strip(". ")[:80].strip()
     return cleaned or fallback
 
 
